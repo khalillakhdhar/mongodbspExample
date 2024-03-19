@@ -1,7 +1,10 @@
 package com.mongod.documents;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,5 +24,8 @@ public class Book {
 	
 	private String title;
 	private double price;
+	@DBRef
+	@JsonIgnoreProperties("books")
+	private Author author;
 
 }
